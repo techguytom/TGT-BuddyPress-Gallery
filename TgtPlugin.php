@@ -5,7 +5,7 @@
  *  @package WordPress
  */
 
-namespace Tgt;
+namespace Tgt\Gallery;
 
 /**
  * TgtPlugin
@@ -33,7 +33,7 @@ class TgtPlugin
      */
     public function setPath($path)
     {
-        $this->_path = $path;
+        $this->path = $path;
     }
 
     /**
@@ -72,9 +72,14 @@ class TgtPlugin
     public function pluginActivation()
     {
         global $wp_version;
-        if (version_compare($wp_version, "3.5", "<")) {
+
+        if (version_compare($wp_version, "3.8", "<") 
+            || (!is_plugin_active('wp-views/wp-views.php')
+            || !is_plugin_active('buddypress/bp-loader.php'))) {
             deactivate_plugins(basename(__FILE__));
-            wp_die("This plugin requires Wordpress version 3.5 or higher.");
+            wp_die(
+                "This plugin requires Wordpress version 3.8 or higher and that the WP Views, BuddyPress plugins are active."
+            );
         }
     }
 

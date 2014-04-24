@@ -11,7 +11,7 @@
 
 require_once 'TgtPlugin.php';
 
-$tgtPlugin = new Tgt\TgtPlugin;
+$tgtPlugin = new Tgt\Gallery\TgtPlugin;
 
 $tgtPlugin->setPath(realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 spl_autoload_register(array($tgtPlugin, 'autoloader'));
