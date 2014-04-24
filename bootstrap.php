@@ -19,4 +19,4 @@ spl_autoload_register(array($tgtPlugin, 'autoloader'));
 register_activation_hook(__FILE__, array($tgtPlugin, 'pluginActivation'));
 register_deactivation_hook(__FILE__, array($tgtPlugin, 'pluginDeactivation'));
 
-add_action('init', array($tgtPlugin, 'init'));
+$tgtPlugin->run();
