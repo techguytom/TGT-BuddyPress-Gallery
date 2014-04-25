@@ -9,8 +9,10 @@ class BuddyPressNavItem extends BaseController
         $arg = array(
             'name' => 'Gallery',
             'slug' => 'cay-gallery',
+            'default_subnav_slug' => 'cay-gallery',
             'position' => 90,
             'screen_function' => array($this, 'galleryScreen'),
+            'user_has_access' => true,
         );
         bp_core_new_nav_item($arg);
     }
