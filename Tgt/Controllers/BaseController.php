@@ -8,7 +8,7 @@
  * @subpackage Controllers
  */
 
-namespace Tgt\Gallery\Controllers;
+namespace Tgt\Controllers;
 
 /**
  * BaseController

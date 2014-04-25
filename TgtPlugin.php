@@ -5,7 +5,7 @@
  *  @package WordPress
  */
 
-namespace Tgt\Gallery;
+namespace Tgt;
 
 /**
  * TgtPlugin
@@ -56,8 +56,13 @@ class TgtPlugin
     public function run()
     {
         $navItem = new Controllers\BuddyPressNavItem('BuddyPressNavItem', $this->getPath());
+        $scripts = new Controllers\LoginHeaderScriptsController('LoginHeaderScripts', $this->getPath());
+        $login   = new Controllers\LoginHeaderController('LoginHeader', $this->getPath());
 
+        add_action('wp_enqueue_scripts', array($scripts, 'enqueueScripts'));
         add_action('bp_setup_nav', array($navItem, 'newNavItem'), 10);
+
+        add_filter('genesis_do_nav', array($login, 'logInHeader'), 3, 10);
     }
 
     /**

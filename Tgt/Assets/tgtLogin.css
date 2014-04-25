@@ -1,0 +1,12 @@
+.loginAdditions {
+    margin-right: 15px;
+}
+.loginDropDown {
+    background-color: #3BC1CD;
+    display: none;
+    padding: 10px 10px 0;
+    position: absolute;
+}
+.loginDropDown .button-primary {
+    width: auto;
+}
