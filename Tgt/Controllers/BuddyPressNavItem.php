@@ -27,12 +27,13 @@ class BuddyPressNavItem extends BaseController
     public function newNavItem()
     {
         $arg = array(
-            'name' => 'Gallery',
-            'slug' => 'cay-gallery',
-            'default_subnav_slug' => 'cay-gallery',
-            'position' => 90,
-            'screen_function' => array($this, 'galleryScreen'),
-            'user_has_access' => true,
+            'name'                    => 'Gallery',
+            'slug'                    => 'cay-gallery',
+            'default_subnav_slug'     => 'cay-gallery',
+            'position'                => 90,
+            'screen_function'         => array($this, 'galleryScreen'),
+            'user_has_access'         => true,
+            'show_for_displayed_user' => true,
         );
         bp_core_new_nav_item($arg);
     }
