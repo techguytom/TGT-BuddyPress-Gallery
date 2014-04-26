@@ -33,7 +33,7 @@ class TgtPlugin
      */
     public function setPath($path)
     {
-        $this->_path = $path;
+        $this->path = $path;
     }
 
     /**
@@ -47,19 +47,22 @@ class TgtPlugin
     }
 
     /**
-     * init
+     * run
      *
      * Add registers here using namespace via the controller autoloader
      *
      * @return void
      */
-    public function init()
+    public function run()
     {
-        // Examples
-        //$scripts = new Controllers\LoginHeaderScriptsController('LoginHeaderScripts', $this->getPath());
+        $navItem = new Controllers\BuddyPressNavItem('BuddyPressNavItem', $this->getPath());
+        $scripts = new Controllers\LoginHeaderScriptsController('LoginHeaderScripts', $this->getPath());
+        $login   = new Controllers\LoginHeaderController('LoginHeader', $this->getPath());
 
-        //add_action('wp_enqueue_scripts', array($scripts, 'enqueueScripts'));
-        //add_filter('genesis_do_nav', array($login, 'logInHeader'), 3, 10);
+        add_action('wp_enqueue_scripts', array($scripts, 'enqueueScripts'));
+        add_action('bp_setup_nav', array($navItem, 'newNavItem'), 10);
+
+        add_filter('genesis_do_nav', array($login, 'logInHeader'), 3, 10);
     }
 
     /**
@@ -72,9 +75,14 @@ class TgtPlugin
     public function pluginActivation()
     {
         global $wp_version;
-        if (version_compare($wp_version, "3.5", "<")) {
+
+        if (version_compare($wp_version, "3.8", "<")
+            || (!is_plugin_active('wp-views/wp-views.php')
+            || !is_plugin_active('buddypress/bp-loader.php'))) {
             deactivate_plugins(basename(__FILE__));
-            wp_die("This plugin requires Wordpress version 3.5 or higher.");
+            wp_die(
+                "This plugin requires Wordpress version 3.8 or higher and that the WP Views, BuddyPress plugins are active."
+            );
         }
     }
 
@@ -99,8 +107,8 @@ class TgtPlugin
     public function autoLoader($className)
     {
         $filename = str_replace('\\', '/', $className) . '.php';
-        if (file_exists($this->_path . $filename)) {
-            require_once $this->_path . $filename;
+        if (file_exists($this->path . $filename)) {
+            require_once $this->path . $filename;
         }
     }
 }
