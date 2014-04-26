@@ -4,7 +4,7 @@
  * Plugin URI: http://techguytom.com
  * Description: Adding support for login menue and user BuddyPress Galleries on
  * ctrlaltyouth.org;  REQUIRES: WP Views Plugin
- * Version: 0.0
+ * Version: 0.2
  * Author: Tom Jenkins <tom@techguytom.com>
  * Author URI: http://techguytom.com
  */
