@@ -76,7 +76,7 @@ class TgtPlugin
     {
         global $wp_version;
 
-        if (version_compare($wp_version, "3.8", "<") 
+        if (version_compare($wp_version, "3.8", "<")
             || (!is_plugin_active('wp-views/wp-views.php')
             || !is_plugin_active('buddypress/bp-loader.php'))) {
             deactivate_plugins(basename(__FILE__));

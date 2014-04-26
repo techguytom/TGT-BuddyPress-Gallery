@@ -31,4 +31,4 @@ class LoginHeaderScriptsController extends BaseController
         wp_enqueue_style('tgtLogIn', plugins_url() . '/tgt-plugins/Tgt/Assets/tgtLogin.css');
         wp_enqueue_script('tgtLogIn', plugins_url() . '/tgt-plugins/Tgt/Assets/tgtLogin.js', 'jquery');
     }
-} 
+}

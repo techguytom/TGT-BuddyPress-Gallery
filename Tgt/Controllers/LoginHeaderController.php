@@ -54,4 +54,4 @@ class LoginHeaderController extends BaseController
 
         return $newOutput;
     }
-} 
+}
